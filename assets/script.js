@@ -5,10 +5,16 @@
 //store score in localStorage and allow an input for initals 
 // need a variable to keep score 
 
-let timer = 30;
 
+//element that holds the timer
 let timeEl = document.querySelector(".time");
+let timer = 30;
 let start_button = document.querySelector("#start_game");
+let homeDiv = document.querySelector(".homeScreen");
+let questionDiv = document.querySelector(".quiz_container");
+
+
+
 let questions = [];
 
 
@@ -31,10 +37,29 @@ questions = [{text: " Which is not a primitive data type in JavaScript? ", answe
 
 ];
 
-start_button.addEventListener("click",function (){
-    
-setTime();
-});
+function init(){
+    questionDiv.classList.add("hide");
+
+
+};
+
+init();
+
+//start game function
+function startGame() {
+    setTime();
+
+    homeDiv.classList.add("hide");
+    questionDiv.classList.remove("hide");
+
+
+
+
+
+  };
+
+
+
 
 
 
@@ -59,3 +84,6 @@ function setTime() {
   
     }, 1000);
 }
+
+  //when start button is clicked the game will start
+  start_button.addEventListener("click",startGame);
