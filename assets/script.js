@@ -12,8 +12,12 @@ let timer = 30;
 let start_button = document.querySelector("#start_game");
 let homeDiv = document.querySelector(".homeScreen");
 let questionDiv = document.querySelector(".quiz_container");
+let questionEl = document.getElementById("question");
+let answerEl = document.getElementById("answer_choices");
+let choicesEl = answerEl.getElementsByClassName("choices");
+let questionIndex = 0;
 
-
+let timerInterval;
 
 let questions = [];
 
@@ -45,18 +49,38 @@ function init(){
 
 init();
 
+
+
 //start game function
 function startGame() {
+   
     setTime();
 
     homeDiv.classList.add("hide");
     questionDiv.classList.remove("hide");
 
+    //create a loop that will loop through question and answers and display on the screen 
+    for ( let i = 0; i < questions[questionIndex].answer.length; i++) {
+        questionEl.innerHTML = questions[questionIndex].text;
+        answerEl = questions[questionIndex].answer[i];
+        choicesEl = document.createElement("button");
+        choicesEl.innerHTML = answerEl;
+        questionDiv.appendChild(choicesEl);
+    };
+        
+    }
+
+    // questionEl.innerText = questions[0].text;
+    // choicesEl.innerText = questions[0].answer;
 
 
 
 
-  };
+
+  
+
+  
+  
 
 
 
@@ -86,4 +110,9 @@ function setTime() {
 }
 
   //when start button is clicked the game will start
-  start_button.addEventListener("click",startGame);
+  start_button.addEventListener("click", function(event){
+      clearInterval(timerInterval);
+      timer= 30;
+      startGame();
+
+  });
