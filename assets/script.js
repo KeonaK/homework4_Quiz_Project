@@ -15,6 +15,7 @@ let questionDiv = document.querySelector(".quiz_container");
 let questionEl = document.getElementById("question");
 let answerEl = document.getElementById("answer_choices");
 let checker = document.getElementById("check");
+let quizOver = document.getElementById("initials");
 let choicesEl;
 let userChoice;
 let questionIndex = 0;
@@ -48,6 +49,7 @@ questions = [{text: " Which is not a primitive data type in JavaScript? ", answe
 function init(){
     questionDiv.classList.add("hide");
     checker.classList.add("hide");
+    quizOver.classList.add("hide");
 
 
 };
@@ -78,6 +80,7 @@ function quiz(){
         answerEl = questions[questionIndex].answer[i];
 
          choicesEl = document.createElement("button");
+         
 
         choicesEl.innerHTML = answerEl;
 
@@ -132,6 +135,11 @@ function setTime() {
       if(timer === 0) {
         // Stops execution of action at set interval
         clearInterval(timerInterval);
+        questionDiv.classList.add("hide");
+        quizOver.classList.remove("hide");
+
+        
+
         
       }
   
