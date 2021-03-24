@@ -4,3 +4,5 @@ This project is a code quiz game. The object of the game is to answer all the qu
 
 (Github link: )[https://github.com/KeonaK/homework4_Quiz_Project]
 (Github deploy link: )[https://keonak.github.io/homework4_Quiz_Project/]
+
+![image](assets/code_quiz.png)
