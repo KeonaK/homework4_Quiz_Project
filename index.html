@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id= "viewScore">View Scores</button>
+    <h1 class="time" style="text-align: right;"> </h1>
+    <section class="homeScreen" style="text-align: center;">
+    <h1 style="color: purple;">Code Quiz Game </h1>
+    <p>Answer all the questions in 60 seconds. If you get an answer wrong you will lose ten seconds on the timer. Good Luck!</p>
+    <button id="start_game">Start</button>
+    </section>
+    <section class= "quiz_container" style="text-align: center">
+        <h2 id="question"></h2>
+        <div id="answer_choices"></div>
+        <div id="check"></div>
+       
+
+    </section>
+    <section id="initials" style="text-align: center;">
+        <h1>Quiz Over! </h1>
+        <p>Your score is: </p>
+        <form action="">
+            <label for="initials">Enter your initals: </label>
+            <input type="text" placeholder="Your initials here" class="initial_input">
+            <button id="submit">Submit</button>
+        </form>
+        <div id="highscore">
+            <h2>Highscores!</h2>
+            <div id="yourScore"></div>
+            <button id="go_back">Go Back</button>
+            <button>Clear Highscores</button>
+        </div>
+
+    </section>
+   
+
+    <script src="./assets/script.js"></script>
+</body>
+</html>
