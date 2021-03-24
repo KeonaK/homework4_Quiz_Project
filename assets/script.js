@@ -8,14 +8,17 @@
 
 //element that holds the timer
 let timeEl = document.querySelector(".time");
-let timer = 30;
+let timer = 60;
 let start_button = document.querySelector("#start_game");
 let homeDiv = document.querySelector(".homeScreen");
 let questionDiv = document.querySelector(".quiz_container");
 let questionEl = document.getElementById("question");
 let answerEl = document.getElementById("answer_choices");
-let choicesEl = answerEl.getElementsByClassName("choices");
+let checker = document.getElementById("check");
+let choicesEl;
+let userChoice;
 let questionIndex = 0;
+let score = 0;
 
 let timerInterval;
 
@@ -41,8 +44,10 @@ questions = [{text: " Which is not a primitive data type in JavaScript? ", answe
 
 ];
 
+//hides the quiz screen
 function init(){
     questionDiv.classList.add("hide");
+    checker.classList.add("hide");
 
 
 };
@@ -55,26 +60,50 @@ init();
 function startGame() {
    
     setTime();
-
     homeDiv.classList.add("hide");
     questionDiv.classList.remove("hide");
+    quiz();
 
-    //create a loop that will loop through question and answers and display on the screen 
+
+
+
+    };
+
+   
+function quiz(){
+  //loop that will loop through question and answers and display on the screen 
     for ( let i = 0; i < questions[questionIndex].answer.length; i++) {
         questionEl.innerHTML = questions[questionIndex].text;
+
         answerEl = questions[questionIndex].answer[i];
-        choicesEl = document.createElement("button");
+
+         choicesEl = document.createElement("button");
+
         choicesEl.innerHTML = answerEl;
+
         questionDiv.appendChild(choicesEl);
-    };
+
+        choicesEl.addEventListener("click", function(){
+          
+            if(questions[questionIndex].answer[i]=== questions[questionIndex].correctAnswerIndex){
+                checker.classList.remove("hide");
+                checker.innerHTML = "Correct!";
+                score++;
+                questions++;
+                questionEl.innerHTML = questions[questionIndex].answer;
+    
+    
+            }
+    
+        })
+
+
         
-    }
 
-    // questionEl.innerText = questions[0].text;
-    // choicesEl.innerText = questions[0].answer;
+    };
+}
 
-
-
+    
 
 
   
@@ -112,7 +141,7 @@ function setTime() {
   //when start button is clicked the game will start
   start_button.addEventListener("click", function(event){
       clearInterval(timerInterval);
-      timer= 30;
+      timer= 60;
       startGame();
 
   });
