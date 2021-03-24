@@ -16,6 +16,12 @@ let questionEl = document.getElementById("question");
 let answerEl = document.getElementById("answer_choices");
 let checker = document.getElementById("check");
 let quizOver = document.getElementById("initials");
+let initals = document.getElementsByClassName("initial_input")
+let highscoreEl = document.getElementById("highscore");
+let submitButton = document.getElementById("submit");
+let yourScore = document.getElementById("yourScore");
+let go_back = document.getElementById("go_back");
+let scoreView = document.getElementById("viewScore")
 let choicesEl;
 let userChoice;
 let questionIndex = 0;
@@ -50,6 +56,7 @@ function init(){
     questionDiv.classList.add("hide");
     checker.classList.add("hide");
     quizOver.classList.add("hide");
+    highscoreEl.classList.add("hide");
 
 
 };
@@ -104,10 +111,36 @@ function quiz(){
         
 
     };
-}
+};
+
+//displays the users initials and highscore
+function high_score(){
+    //places user input into a variable
+    clearInterval(timerInterval);
+    initialValue = initial.value.trim();
+    highscoreEl.classList.remove("hide");
+    yourScore.innerHTML = initialValue + " Highscore: " + score;
+
 
     
+};
+//will go back to the home screen
+function goBack (){
+    clearInterval(timerInterval);
+    highscoreEl.classList.add("hide");
+    homeDiv.classList.remove("hide");
+};
 
+function view_score (){
+    clearInterval(timerInterval);
+    questionDiv.classList.add("hide");
+    highscoreEl.classList.remove("hide");
+
+};
+
+scoreView.addEventListener("click",view_score);
+ go_back.addEventListener("click",goBack);   
+submitButton.addEventListener("click", high_score);
 
   
 
